@@ -15,8 +15,6 @@
 		CE0A1AD51BEE1CE800B474F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0A1AD31BEE1CE800B474F2 /* LaunchScreen.storyboard */; };
 		CE0A1AE01BEE1CE900B474F2 /* BGWaterFlowViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1ADF1BEE1CE900B474F2 /* BGWaterFlowViewDemoTests.m */; };
 		CE0A1AEB1BEE1CE900B474F2 /* BGWaterFlowViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1AEA1BEE1CE900B474F2 /* BGWaterFlowViewDemoUITests.m */; };
-		CE0A1AFB1BEE1D7900B474F2 /* BGWaterFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1AFA1BEE1D7900B474F2 /* BGWaterFlowView.m */; };
-		CE0A1AFE1BEE1D8600B474F2 /* BGWaterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1AFD1BEE1D8600B474F2 /* BGWaterFlowLayout.m */; };
 		CE0A1B011BEE1DA000B474F2 /* BGCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1B001BEE1DA000B474F2 /* BGCollectionViewCell.m */; };
 		CE0A1B0E1BEE1DC200B474F2 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1B041BEE1DC200B474F2 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE0A1B0F1BEE1DC200B474F2 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0A1B061BEE1DC200B474F2 /* blackArrow.png */; };
@@ -45,6 +43,8 @@
 		CE0A1B481BEE1DCA00B474F2 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1B381BEE1DCA00B474F2 /* UIView+WebCacheOperation.m */; };
 		CE0A1B4C1BEE1E2A00B474F2 /* UIView+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1B4B1BEE1E2A00B474F2 /* UIView+Extra.m */; };
 		CE0A1B4E1BEE214300B474F2 /* pic_url.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE0A1B4D1BEE214300B474F2 /* pic_url.plist */; };
+		CE0A1B541BEE303E00B474F2 /* BGWaterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1B511BEE303E00B474F2 /* BGWaterFlowLayout.m */; };
+		CE0A1B551BEE303E00B474F2 /* BGWaterFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A1B531BEE303E00B474F2 /* BGWaterFlowView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,10 +81,6 @@
 		CE0A1AE61BEE1CE900B474F2 /* BGWaterFlowViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BGWaterFlowViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0A1AEA1BEE1CE900B474F2 /* BGWaterFlowViewDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGWaterFlowViewDemoUITests.m; sourceTree = "<group>"; };
 		CE0A1AEC1BEE1CE900B474F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE0A1AF91BEE1D7900B474F2 /* BGWaterFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGWaterFlowView.h; sourceTree = "<group>"; };
-		CE0A1AFA1BEE1D7900B474F2 /* BGWaterFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGWaterFlowView.m; sourceTree = "<group>"; };
-		CE0A1AFC1BEE1D8600B474F2 /* BGWaterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGWaterFlowLayout.h; sourceTree = "<group>"; };
-		CE0A1AFD1BEE1D8600B474F2 /* BGWaterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGWaterFlowLayout.m; sourceTree = "<group>"; };
 		CE0A1AFF1BEE1DA000B474F2 /* BGCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGCollectionViewCell.h; sourceTree = "<group>"; };
 		CE0A1B001BEE1DA000B474F2 /* BGCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGCollectionViewCell.m; sourceTree = "<group>"; };
 		CE0A1B031BEE1DC200B474F2 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -134,6 +130,10 @@
 		CE0A1B4A1BEE1E2A00B474F2 /* UIView+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extra.h"; sourceTree = "<group>"; };
 		CE0A1B4B1BEE1E2A00B474F2 /* UIView+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extra.m"; sourceTree = "<group>"; };
 		CE0A1B4D1BEE214300B474F2 /* pic_url.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pic_url.plist; sourceTree = "<group>"; };
+		CE0A1B501BEE303E00B474F2 /* BGWaterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGWaterFlowLayout.h; sourceTree = "<group>"; };
+		CE0A1B511BEE303E00B474F2 /* BGWaterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGWaterFlowLayout.m; sourceTree = "<group>"; };
+		CE0A1B521BEE303E00B474F2 /* BGWaterFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGWaterFlowView.h; sourceTree = "<group>"; };
+		CE0A1B531BEE303E00B474F2 /* BGWaterFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGWaterFlowView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +164,6 @@
 		CE0A1AB91BEE1CE800B474F2 = {
 			isa = PBXGroup;
 			children = (
-				CE0A1AF81BEE1D6800B474F2 /* BGWaterFlowView */,
 				CE0A1AC41BEE1CE800B474F2 /* BGWaterFlowViewDemo */,
 				CE0A1ADE1BEE1CE900B474F2 /* BGWaterFlowViewDemoTests */,
 				CE0A1AE91BEE1CE900B474F2 /* BGWaterFlowViewDemoUITests */,
@@ -185,6 +184,7 @@
 		CE0A1AC41BEE1CE800B474F2 /* BGWaterFlowViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CE0A1B4F1BEE303E00B474F2 /* BGWaterFlowView */,
 				CE0A1B171BEE1DCA00B474F2 /* SDWebImage */,
 				CE0A1B021BEE1DC200B474F2 /* EGOTableViewPullRefresh */,
 				CE0A1AC81BEE1CE800B474F2 /* AppDelegate.h */,
@@ -230,17 +230,6 @@
 				CE0A1AEC1BEE1CE900B474F2 /* Info.plist */,
 			);
 			path = BGWaterFlowViewDemoUITests;
-			sourceTree = "<group>";
-		};
-		CE0A1AF81BEE1D6800B474F2 /* BGWaterFlowView */ = {
-			isa = PBXGroup;
-			children = (
-				CE0A1AF91BEE1D7900B474F2 /* BGWaterFlowView.h */,
-				CE0A1AFA1BEE1D7900B474F2 /* BGWaterFlowView.m */,
-				CE0A1AFC1BEE1D8600B474F2 /* BGWaterFlowLayout.h */,
-				CE0A1AFD1BEE1D8600B474F2 /* BGWaterFlowLayout.m */,
-			);
-			path = BGWaterFlowView;
 			sourceTree = "<group>";
 		};
 		CE0A1B021BEE1DC200B474F2 /* EGOTableViewPullRefresh */ = {
@@ -306,6 +295,18 @@
 				CE0A1B381BEE1DCA00B474F2 /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		CE0A1B4F1BEE303E00B474F2 /* BGWaterFlowView */ = {
+			isa = PBXGroup;
+			children = (
+				CE0A1B501BEE303E00B474F2 /* BGWaterFlowLayout.h */,
+				CE0A1B511BEE303E00B474F2 /* BGWaterFlowLayout.m */,
+				CE0A1B521BEE303E00B474F2 /* BGWaterFlowView.h */,
+				CE0A1B531BEE303E00B474F2 /* BGWaterFlowView.m */,
+			);
+			name = BGWaterFlowView;
+			path = ../../BGWaterFlowView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,6 +450,7 @@
 			files = (
 				CE0A1B471BEE1DCA00B474F2 /* UIImageView+WebCache.m in Sources */,
 				CE0A1B431BEE1DCA00B474F2 /* UIImage+GIF.m in Sources */,
+				CE0A1B541BEE303E00B474F2 /* BGWaterFlowLayout.m in Sources */,
 				CE0A1B3C1BEE1DCA00B474F2 /* SDWebImageCompat.m in Sources */,
 				CE0A1B421BEE1DCA00B474F2 /* UIButton+WebCache.m in Sources */,
 				CE0A1B441BEE1DCA00B474F2 /* UIImage+MultiFormat.m in Sources */,
@@ -457,6 +459,7 @@
 				CE0A1B481BEE1DCA00B474F2 /* UIView+WebCacheOperation.m in Sources */,
 				CE0A1B391BEE1DCA00B474F2 /* MKAnnotationView+WebCache.m in Sources */,
 				CE0A1B451BEE1DCA00B474F2 /* UIImage+WebP.m in Sources */,
+				CE0A1B551BEE303E00B474F2 /* BGWaterFlowView.m in Sources */,
 				CE0A1B011BEE1DA000B474F2 /* BGCollectionViewCell.m in Sources */,
 				CE0A1B3F1BEE1DCA00B474F2 /* SDWebImageDownloaderOperation.m in Sources */,
 				CE0A1B3D1BEE1DCA00B474F2 /* SDWebImageDecoder.m in Sources */,
@@ -465,11 +468,9 @@
 				CE0A1B3A1BEE1DCA00B474F2 /* NSData+ImageContentType.m in Sources */,
 				CE0A1B3E1BEE1DCA00B474F2 /* SDWebImageDownloader.m in Sources */,
 				CE0A1B4C1BEE1E2A00B474F2 /* UIView+Extra.m in Sources */,
-				CE0A1AFE1BEE1D8600B474F2 /* BGWaterFlowLayout.m in Sources */,
 				CE0A1AC71BEE1CE800B474F2 /* main.m in Sources */,
 				CE0A1B0E1BEE1DC200B474F2 /* EGORefreshTableHeaderView.m in Sources */,
 				CE0A1B401BEE1DCA00B474F2 /* SDWebImageManager.m in Sources */,
-				CE0A1AFB1BEE1D7900B474F2 /* BGWaterFlowView.m in Sources */,
 				CE0A1B3B1BEE1DCA00B474F2 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,6 +695,7 @@
 				CE0A1AF11BEE1CE900B474F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE0A1AF21BEE1CE900B474F2 /* Build configuration list for PBXNativeTarget "BGWaterFlowViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -702,6 +704,7 @@
 				CE0A1AF41BEE1CE900B474F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE0A1AF51BEE1CE900B474F2 /* Build configuration list for PBXNativeTarget "BGWaterFlowViewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -710,6 +713,7 @@
 				CE0A1AF71BEE1CE900B474F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

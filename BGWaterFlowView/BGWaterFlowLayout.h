@@ -35,11 +35,11 @@
  */
 @property (nonatomic) UIEdgeInsets contentInset;
 /**
- *  头视图的高度，默认为0
+ *  头视图的高度，默认为0；为0时，不显示头视图
  */
 @property (nonatomic, assign) CGFloat headerHeight;
 /**
- *  尾部视图的高度，默认为0
+ *  尾部视图的高度，默认为0；为0时，不显示尾部视图
  */
 @property (nonatomic, assign) CGFloat footerHeight;
 @end

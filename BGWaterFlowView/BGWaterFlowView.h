@@ -11,6 +11,9 @@
 @protocol BGWaterFlowViewDataSource;
 @protocol BGWaterFlowViewDelegate;
 #pragma mark - BGWaterFlowView
+/**
+ *  瀑布流view
+ */
 @interface BGWaterFlowView : UIView
 //@property (nonatomic, strong, readonly) UICollectionView *collectionView;
 @property (nonatomic, weak) id<BGWaterFlowViewDataSource> dataSource;
@@ -51,6 +54,9 @@
 @optional
 - (void)pullDownWithRefreshWaterFlowView:(BGRefreshWaterFlowView *)refreshWaterFlowView;
 @end
+/**
+ *  带刷新的瀑布流
+ */
 @interface BGRefreshWaterFlowView: BGWaterFlowView
 @property(nonatomic, assign)BOOL isPullMore;
 @end

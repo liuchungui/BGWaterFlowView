@@ -161,4 +161,36 @@
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:elementKind withIndexPath:indexPath];
     return attributes;
 }
+
+#pragma mark - set method
+- (void)setItemSpacing:(CGFloat)itemSpacing{
+    _itemSpacing = itemSpacing;
+    [self invalidateLayout];
+}
+
+- (void)setItemWidth:(CGFloat)itemWidth{
+    _itemWidth = itemWidth;
+    [self invalidateLayout];
+}
+
+- (void)setColumnNum:(NSUInteger)columnNum{
+    _columnNum = columnNum;
+    [self invalidateLayout];
+}
+
+- (void)setContentInset:(UIEdgeInsets)contentInset{
+    _contentInset = contentInset;
+    [self invalidateLayout];
+}
+
+- (void)setHeaderHeight:(CGFloat)headerHeight{
+    _headerHeight = headerHeight;
+    [self invalidateLayout];
+}
+
+- (void)setFooterHeight:(CGFloat)footerHeight{
+    _footerHeight = footerHeight;
+    [self invalidateLayout];
+}
+
 @end

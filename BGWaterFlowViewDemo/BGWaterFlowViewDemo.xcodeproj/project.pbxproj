@@ -126,7 +126,6 @@
 		CE0A1B361BEE1DCA00B474F2 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		CE0A1B371BEE1DCA00B474F2 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		CE0A1B381BEE1DCA00B474F2 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		CE0A1B491BEE1E0300B474F2 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		CE0A1B4A1BEE1E2A00B474F2 /* UIView+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extra.h"; sourceTree = "<group>"; };
 		CE0A1B4B1BEE1E2A00B474F2 /* UIView+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extra.m"; sourceTree = "<group>"; };
 		CE0A1B4D1BEE214300B474F2 /* pic_url.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pic_url.plist; sourceTree = "<group>"; };
@@ -189,7 +188,6 @@
 				CE0A1B021BEE1DC200B474F2 /* EGOTableViewPullRefresh */,
 				CE0A1AC81BEE1CE800B474F2 /* AppDelegate.h */,
 				CE0A1AC91BEE1CE800B474F2 /* AppDelegate.m */,
-				CE0A1B491BEE1E0300B474F2 /* Common.h */,
 				CE0A1ACB1BEE1CE800B474F2 /* ViewController.h */,
 				CE0A1ACC1BEE1CE800B474F2 /* ViewController.m */,
 				CE0A1B4A1BEE1E2A00B474F2 /* UIView+Extra.h */,

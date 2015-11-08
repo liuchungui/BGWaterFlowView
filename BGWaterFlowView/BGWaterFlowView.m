@@ -119,21 +119,20 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 
 @end
 @implementation BGRefreshWaterFlowView
-- (void)initViews{
+- (void)initViews {
     [super initViews];
     BGWaterFlowLayout *waterFlowLayout = (BGWaterFlowLayout *)self.collectionView.collectionViewLayout;
     waterFlowLayout.headerHeight = 1.0f;
 //    waterFlowLayout.headerHeight = 10;
-//    waterFlowLayout.footerHeight = 40;
+    waterFlowLayout.footerHeight = 60;
     
     //注册头部、尾部
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:BGCollectionRefreshHeaderView];
-//    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:BGCollectionRefreshFooterView];
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:BGCollectionRefreshFooterView];
 }
 
-- (void)reloadData{
+- (void)reloadData {
     [super reloadData];
-    [self pullDownLoadingData];
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -151,10 +150,62 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
         }
         
         return collectionHeaderView;
+    } else if([kind isEqual:UICollectionElementKindSectionFooter]) {
+        UICollectionReusableView *collectionFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:BGCollectionRefreshFooterView forIndexPath:indexPath];
+        if (!_loadMoreButton) {
+            _loadMoreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            _loadMoreButton.backgroundColor = [UIColor clearColor];
+            _loadMoreButton.frame = CGRectMake(0, 0, BGScreenWidth, 40);
+            UIFont *font1 = [UIFont systemFontOfSize:13.0];
+            [_loadMoreButton addTarget:self action:@selector(loadMoreDataAction) forControlEvents:UIControlEventTouchUpInside];
+            _showHintDescLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, BGScreenWidth, 13)];
+            _showHintDescLabel.text = @"上拉加载更多图片...";
+            _showHintDescLabel.font = font1;
+            _showHintDescLabel.textColor = UIColorFromHex(0xaaaaaa);
+            [_loadMoreButton addSubview:_showHintDescLabel];
+            _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            _activityView.frame = CGRectMake(100, 10, 20, 20);
+            _activityView.hidden = NO;
+            [_activityView stopAnimating];
+            [self refreshHintLabelFrame];
+            [_loadMoreButton addSubview:_activityView];
+            [collectionFooterView addSubview:_loadMoreButton];
+        }
+        return collectionFooterView;
     }
     return nil;
 }
+    
+- (void)loadMoreDataAction {
+    [self loadMoreDataLoadingUI];
+    
+    id<BGRefreshWaterFlowViewDelegate> delegate = (id<BGRefreshWaterFlowViewDelegate>)self.delegate;
+    if([delegate respondsToSelector:@selector(pullUpWithRefreshWaterFlowView:)]){
+        [delegate pullUpWithRefreshWaterFlowView:self];
+    }
+}
+    
+- (void)loadMoreDataLoadingUI {
+    _showHintDescLabel.text = @"正在加载中...";
+    [self refreshHintLabelFrame];
+//    [_activityView stopAnimating];
+    _loadMoreButton.enabled = NO;
+    [_activityView startAnimating];
+}
+    
+- (void)pullUpDidFinishedLoadingMore {
+    if (_isLoadComplete) {
+        _loadMoreButton.hidden = NO;
+        _loadMoreButton.enabled = YES;
+        _showHintDescLabel.text = @"上拉加载更多图片...";
+        [self refreshHintLabelFrame];
+        [_activityView stopAnimating];
+    }else {
+        _loadMoreButton.hidden = YES;
+    }
+}
 
+    
 #pragma mark - EGORefreshTableHeaderDelegate Methods
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view {
     id<BGRefreshWaterFlowViewDelegate> delegate = (id<BGRefreshWaterFlowViewDelegate>)self.delegate;
@@ -188,7 +239,7 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
     _reloading = YES;
 }
 
-- (void)pullDownLoadingData {
+- (void)pullDownDidFinishedLoadingRefresh {
     _reloading = NO;
     [_refreshTableHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.collectionView];
 }
@@ -200,5 +251,9 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [_refreshTableHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    float sub = scrollView.contentSize.height - scrollView.contentOffset.y;
+    if (scrollView.height - sub > 60) {
+        [self loadMoreDataAction];
+    }
 }
 @end

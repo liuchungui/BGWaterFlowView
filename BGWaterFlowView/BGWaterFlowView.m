@@ -217,7 +217,7 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
     if (_isLoadMore) {
         [self resetPullUpShowDescriptionString:@"上拉加载更多图片..."];
     }else {
-        [self resetPullUpShowDescriptionString:@"没有更多图片..."];
+        [self resetPullUpShowDescriptionString:@"没有更多图片"];
     }
 }
 

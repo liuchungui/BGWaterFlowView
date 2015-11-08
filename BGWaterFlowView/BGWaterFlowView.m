@@ -142,7 +142,7 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
     waterFlowLayout.headerHeight = 1.0f;
 //    waterFlowLayout.headerHeight = 10;
     waterFlowLayout.footerHeight = 60;
-    
+    self.isLoadMore = YES;
     //注册头部、尾部
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:BGCollectionRefreshHeaderView];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:BGCollectionRefreshFooterView];
@@ -194,6 +194,9 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 }
     
 - (void)loadMoreDataAction {
+    if (!self.isLoadMore) {
+        return;
+    }
     [self loadMoreDataLoadingUI];
     
     id<BGRefreshWaterFlowViewDelegate> delegate = (id<BGRefreshWaterFlowViewDelegate>)self.delegate;
@@ -212,17 +215,21 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
     
 - (void)pullUpDidFinishedLoadingMore {
     if (_isLoadMore) {
-        _loadMoreButton.hidden = NO;
-        _loadMoreButton.enabled = YES;
-        _showHintDescLabel.text = @"上拉加载更多图片...";
-        [self refreshHintLabelFrame];
-        [_activityView stopAnimating];
+        [self resetPullUpShowDescriptionString:@"上拉加载更多图片..."];
     }else {
-        _loadMoreButton.hidden = YES;
+        [self resetPullUpShowDescriptionString:@"没有更多图片..."];
     }
 }
 
-    
+- (void)resetPullUpShowDescriptionString:(NSString *)str
+{
+    _loadMoreButton.hidden = NO;
+    _loadMoreButton.enabled = YES;
+    _showHintDescLabel.text = str;
+    [self refreshHintLabelFrame];
+    [_activityView stopAnimating];
+}
+
 #pragma mark - EGORefreshTableHeaderDelegate Methods
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view {
     id<BGRefreshWaterFlowViewDelegate> delegate = (id<BGRefreshWaterFlowViewDelegate>)self.delegate;
@@ -258,6 +265,8 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 
 - (void)pullDownDidFinishedLoadingRefresh {
     _reloading = NO;
+    self.isLoadMore = YES;
+    [self resetPullUpShowDescriptionString:@"上拉加载更多图片..."];
     [_refreshTableHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.collectionView];
 }
 

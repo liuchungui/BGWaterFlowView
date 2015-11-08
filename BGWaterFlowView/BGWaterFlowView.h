@@ -52,11 +52,29 @@
 @class BGRefreshWaterFlowView;
 @protocol BGRefreshWaterFlowViewDelegate <BGWaterFlowViewDelegate>
 @optional
+/**
+ *  下拉刷新加载数据代理方法
+ */
 - (void)pullDownWithRefreshWaterFlowView:(BGRefreshWaterFlowView *)refreshWaterFlowView;
+/**
+ *  上拉刷新加载数据代理方法
+ */
+- (void)pullUpWithRefreshWaterFlowView:(BGRefreshWaterFlowView *)refreshWaterFlowView;
 @end
 /**
  *  带刷新的瀑布流
  */
 @interface BGRefreshWaterFlowView: BGWaterFlowView
-@property(nonatomic, assign)BOOL isPullMore;
+/**
+ *  加载更多
+ */
+@property(nonatomic, assign)BOOL isLoadMore;
+/**
+ *  数据源加载完成重置下拉刷新初始状态UI方法
+ */
+- (void)pullDownDidFinishedLoadingRefresh;
+/**
+ *  数据源加载完成重置上拉刷新初始状态UI方法
+ */
+- (void)pullUpDidFinishedLoadingMore;
 @end

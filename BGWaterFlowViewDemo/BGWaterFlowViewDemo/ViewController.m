@@ -10,12 +10,12 @@
 #import "BGWaterFlowView.h"
 #import "BGCollectionViewCell.h"
 
-static const CGFloat delayTiemSecond = 3;
+static const CGFloat delayTiemSecond = 3.0;
 static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
 @interface ViewController () <BGWaterFlowViewDataSource, BGRefreshWaterFlowViewDelegate>
 @property (nonatomic, strong) BGWaterFlowView *waterFlowView;
 @property (nonatomic, strong) NSArray *dataArr;
-
+@property (nonatomic, strong) NSMutableArray *dataList;
 @end
 
 @implementation ViewController
@@ -24,8 +24,9 @@ static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
     [super viewDidLoad];
     self.title = @"瀑布流式布局";
     self.navigationController.navigationBar.translucent = NO;
-//    [self loadPicturesUrlDataFromPlistFile];
-    [self loadPicturesUrlData];
+    self.dataList = [NSMutableArray array];
+    [self loadPicturesUrlDataFromPlistFile];
+//    [self loadPicturesUrlData];
     [self initSubviews];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -51,7 +52,7 @@ static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
     waterFlowView.dataSource = self;
     waterFlowView.delegate = self;
     [self.view addSubview:waterFlowView];
-    
+    [self loadNewRefreshData:waterFlowView];
     [waterFlowView registerClass:[BGCollectionViewCell class] forCellWithReuseIdentifier:BGCollectionCellIdentify];
 }
 
@@ -61,12 +62,12 @@ static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
 }
 
 - (NSInteger)waterFlowView:(BGWaterFlowView *)waterFlowView numberOfItemsInSection:(NSInteger)section{
-    return self.dataArr.count;
+    return self.dataList.count;
 }
 
 - (UICollectionViewCell *)waterFlowView:(BGWaterFlowView *)waterFlowView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     BGCollectionViewCell *cell = [waterFlowView dequeueReusableCellWithReuseIdentifier:BGCollectionCellIdentify forIndexPath:indexPath];
-    cell.urlStr = self.dataArr[indexPath.row];
+    cell.urlStr = self.dataList[indexPath.row];
     [cell setNeedsLayout];
     return cell;
 }
@@ -77,7 +78,35 @@ static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
 
 #pragma mark - BGRefreshWaterFlowViewDelegate method
 - (void)pullDownWithRefreshWaterFlowView:(BGRefreshWaterFlowView *)refreshWaterFlowView{
-    [refreshWaterFlowView performSelector:@selector(reloadData) withObject:nil afterDelay:3.0];
+    [self performSelector:@selector(loadNewRefreshData:) withObject:refreshWaterFlowView afterDelay:delayTiemSecond];
+}
+
+- (void)pullUpWithRefreshWaterFlowView:(BGRefreshWaterFlowView *)refreshWaterFlowView {
+    [self performSelector:@selector(loadMoreRefreshData:) withObject:refreshWaterFlowView afterDelay:delayTiemSecond];
+}
+
+- (void)loadNewRefreshData :(BGRefreshWaterFlowView *)refreshWaterFlowView{
+    if (self.dataArr.count > 0) {
+        [self.dataList removeAllObjects];
+        [self.dataList addObjectsFromArray:self.dataArr[0]];
+    }
+    [refreshWaterFlowView reloadData];
+    [refreshWaterFlowView pullDownDidFinishedLoadingRefresh];
+}
+
+- (void)loadMoreRefreshData:(BGRefreshWaterFlowView *)refreshWaterFlowView {
+    
+    if (self.dataArr.count > 0) {
+        [self.dataList addObjectsFromArray:self.dataArr[1]];
+    }
+    
+    if (self.dataList.count < 21) {
+        refreshWaterFlowView.isLoadMore = NO;
+    } else {
+        refreshWaterFlowView.isLoadMore = YES;
+    }
+    [refreshWaterFlowView reloadData];
+    [refreshWaterFlowView pullUpDidFinishedLoadingMore];
 }
 
 #pragma mark - loadPicturesUrlData

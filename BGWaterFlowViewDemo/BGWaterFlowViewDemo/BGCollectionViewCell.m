@@ -9,7 +9,6 @@
 #import "BGCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIView+Extra.h"
-#import "Common.h"
 
 @implementation BGCollectionViewCell
 - (id)initWithFrame:(CGRect)frame

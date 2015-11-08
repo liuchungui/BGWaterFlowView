@@ -20,6 +20,7 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 #pragma mark - BGWaterFlowView class
 @interface BGWaterFlowView ()<BGWaterFlowLayoutDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) BGWaterFlowLayout *waterFlowLayout;
 @end
 @implementation BGWaterFlowView
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -37,7 +38,7 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
     BGWaterFlowLayout *waterFlowLayout = [[BGWaterFlowLayout alloc] init];
     waterFlowLayout.columnNum = 4;
     waterFlowLayout.itemSpacing = 15;
-    waterFlowLayout.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    waterFlowLayout.contentInset = UIEdgeInsetsZero;
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:waterFlowLayout];
     collectionView.showsHorizontalScrollIndicator = NO;
@@ -47,6 +48,8 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
     collectionView.delegate = self;
     collectionView.backgroundColor = [UIColor whiteColor];
     [self addSubview:collectionView];
+    
+    self.waterFlowLayout = waterFlowLayout;
     self.collectionView = collectionView;
 }
 
@@ -70,6 +73,20 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 
 - (void)reloadData{
     [self.collectionView reloadData];
+}
+
+- (void)setColumnNum:(NSInteger)columnNum{
+    _columnNum = columnNum;
+    self.waterFlowLayout.columnNum = columnNum;
+}
+
+- (void)setItemSpacing:(CGFloat)itemSpacing{
+    self.waterFlowLayout.itemSpacing = itemSpacing;
+}
+
+- (void)setContentInset:(UIEdgeInsets)contentInset{
+    _contentInset = contentInset;
+    self.waterFlowLayout.contentInset = contentInset;
 }
 
 #pragma mark - UICollectionViewDataSource

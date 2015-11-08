@@ -9,9 +9,10 @@
   - iOS7.0+
  
 ##手动集成方式
-克隆工程到本地，导入"BGWaterFlowView"与"EGOTableViewPullRefresh"文件夹至目标工程中。
+导入"BGWaterFlowView"文件夹至目标工程，由于与"EGOTableViewPullRefresh"文件夹至目标工程中。
 
 ##使用方法：
+内部封装了'BGWaterFlowView'和'BGRefreshWaterFlowView'两个瀑布流视图，其中BGRefreshWaterFlowView自带EGO下拉刷新和自定义加载更多，以下就是BGRefreshWaterFlowView使用步骤。
 
 （1）初始化瀑布流控件视图
 
@@ -20,6 +21,9 @@
     //设置代理
     waterFlowView.dataSource = self;
     waterFlowView.delegate = self;
+    waterFlowView.columnNum = 4;
+    waterFlowView.itemSpacing = 10;
+    waterFlowView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
     [self.view addSubview:waterFlowView];
     //注册Cells
     [waterFlowView registerClass:[BGCollectionViewCell class] forCellWithReuseIdentifier:BGCollectionCellIdentify];
@@ -48,7 +52,7 @@
 }
 ```
 
-（3）实现BGRefreshWaterFlowViewDelegate上下拉刷新加载数据代理方法
+（3）实现`BGRefreshWaterFlowViewDelegate`上下拉刷新加载数据代理方法
 
 ```
 - (void)pullDownWithRefreshWaterFlowView:(BGRefreshWaterFlowView *)refreshWaterFlowView{
@@ -64,8 +68,12 @@
     [refreshWaterFlowView reloadData];
     [refreshWaterFlowView pullUpDidFinishedLoadingMore];
 }
-```
 
+//点击cell的代理方法
+- (void)waterFlowView:(BGWaterFlowView *)waterFlowView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%@", indexPath);
+}
+```
 ##协议许可
 BGWaterFlowView遵循MIT许可协议。有关详细信息,请参阅许可协议。
 

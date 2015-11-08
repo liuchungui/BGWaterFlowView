@@ -6,13 +6,22 @@
   - 上下拉刷新加载数据
   
 ##环境要求
-  - iOS7.0+
+  - iOS6.0+    
  
-##手动集成方式
-导入"BGWaterFlowView"文件夹至目标工程，由于与"EGOTableViewPullRefresh"文件夹至目标工程中。
+##Installation
+####CocoaPods:
+
+```
+ pod "BGWaterFlowView"
+```  
+
+####手动安装：
+
+导入"BGWaterFlowView"文件夹至目标工程，由于依赖于EGO和BGUIFoundationKit中的UIView+Extra，请导入这个两个库至目标工程中。
 
 ##使用方法：
-内部封装了'BGWaterFlowView'和'BGRefreshWaterFlowView'两个瀑布流视图，其中BGRefreshWaterFlowView自带EGO下拉刷新和自定义加载更多，以下就是BGRefreshWaterFlowView使用步骤。
+
+内部封装了BGWaterFlowView和BGRefreshWaterFlowView两个瀑布流视图。BGRefreshWaterFlowView自带EGO下拉刷新和自定义加载更多，以下就是BGRefreshWaterFlowView使用步骤（如使用BGWaterFlowView详见[使用方法](https://github.com/liuchungui/BGWaterFlowView/blob/master/BGWaterFlowView.md)）。
 
 （1）初始化瀑布流控件视图
 
@@ -74,6 +83,7 @@
     NSLog(@"%@", indexPath);
 }
 ```
+
 ##协议许可
 BGWaterFlowView遵循MIT许可协议。有关详细信息,请参阅许可协议。
 

@@ -194,7 +194,7 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 }
     
 - (void)pullUpDidFinishedLoadingMore {
-    if (_isLoadComplete) {
+    if (_isLoadMore) {
         _loadMoreButton.hidden = NO;
         _loadMoreButton.enabled = YES;
         _showHintDescLabel.text = @"上拉加载更多图片...";

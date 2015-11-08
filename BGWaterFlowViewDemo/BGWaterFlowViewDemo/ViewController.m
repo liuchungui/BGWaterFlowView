@@ -101,9 +101,9 @@ static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
     }
     
     if (self.dataList.count < 21) {
-        refreshWaterFlowView.isLoadComplete = NO;
+        refreshWaterFlowView.isLoadMore = NO;
     } else {
-        refreshWaterFlowView.isLoadComplete = YES;
+        refreshWaterFlowView.isLoadMore = YES;
     }
     [refreshWaterFlowView reloadData];
     [refreshWaterFlowView pullUpDidFinishedLoadingMore];

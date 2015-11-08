@@ -65,7 +65,10 @@
  *  带刷新的瀑布流
  */
 @interface BGRefreshWaterFlowView: BGWaterFlowView
-@property(nonatomic, assign)BOOL isLoadComplete;
+/**
+ *  加载更多
+ */
+@property(nonatomic, assign)BOOL isLoadMore;
 /**
  *  数据源加载完成重置下拉刷新初始状态UI方法
  */

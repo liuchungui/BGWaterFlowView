@@ -15,13 +15,24 @@
  *  瀑布流view
  */
 @interface BGWaterFlowView : UIView
-//@property (nonatomic, strong, readonly) UICollectionView *collectionView;
+/**
+ *  列的数目，默认为4
+ */
+@property (nonatomic, assign) NSInteger columnNum;
+/**
+ *  cell的间距，默认为15
+ */
+@property (nonatomic, assign) CGFloat itemSpacing;
+/**
+ *  内容缩进，默认为UIEdgeInsetsZero
+ */
+@property (nonatomic, assign) UIEdgeInsets contentInset;
+
 @property (nonatomic, weak) id<BGWaterFlowViewDataSource> dataSource;
 @property (nonatomic, weak) id<BGWaterFlowViewDelegate> delegate;
 
 - (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 - (void)registerNib:(UINib *)nib forCellWithReuseIdentifier:(NSString *)identifier;
-
 - (__kindof UICollectionViewCell *)dequeueReusableCellWithReuseIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
 
 /**
@@ -77,4 +88,5 @@
  *  数据源加载完成重置上拉刷新初始状态UI方法
  */
 - (void)pullUpDidFinishedLoadingMore;
+
 @end

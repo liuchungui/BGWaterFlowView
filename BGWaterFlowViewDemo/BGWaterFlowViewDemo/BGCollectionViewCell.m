@@ -8,7 +8,6 @@
 
 #import "BGCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
-#import "UIView+Extra.h"
 
 @implementation BGCollectionViewCell
 - (id)initWithFrame:(CGRect)frame
@@ -21,6 +20,11 @@
     return self;
 }
 
+- (void)setUrlStr:(NSString *)urlStr{
+    _urlStr = urlStr;
+    [self setNeedsLayout];
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -29,18 +33,19 @@
 
 - (void)initSubviews
 {
-    self.picImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width)];
+    self.picImgView = [[UIImageView alloc] initWithFrame:self.bounds];
+    self.picImgView.contentMode = UIViewContentModeScaleAspectFill;
     self.picImgView.image = [UIImage imageNamed:@"example.png"];
+    self.clipsToBounds = YES;
     [self.contentView addSubview:self.picImgView];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.picImgView.size = self.bounds.size;
+    self.picImgView.frame = self.bounds;
     NSURL *url = [NSURL URLWithString:self.urlStr];
     [self.picImgView sd_setImageWithURL:url placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
     }];
     
 }

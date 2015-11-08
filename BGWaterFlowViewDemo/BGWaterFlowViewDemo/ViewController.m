@@ -12,6 +12,7 @@
 
 #define BGISRefresh 1
 static const CGFloat delayTiemSecond = 3.0;
+static const NSInteger BGPageCount = 100;
 static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
 @interface ViewController () <BGWaterFlowViewDataSource, BGRefreshWaterFlowViewDelegate>
 @property (nonatomic, strong) BGWaterFlowView *waterFlowView;
@@ -41,10 +42,16 @@ static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
 - (void)loadPicturesUrlDataFromPlistFile{
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"pic_url.plist" ofType:nil];
     NSArray *dataArr = [NSArray arrayWithContentsOfFile:filePath];
+    NSMutableArray *copyArr = [dataArr mutableCopy];
+    for (NSInteger i = 0; i < 100; i++) {
+        [copyArr addObjectsFromArray:dataArr];
+    }
+    dataArr = [copyArr copy];
+    
     NSMutableArray *spaceArr = [NSMutableArray array];
     NSMutableArray *internalArr = nil;
     for (int i = 0; i < dataArr.count; i++) {
-        if (i % 21 == 0) {
+        if (i % BGPageCount == 0) {
             internalArr = [NSMutableArray array];
             [spaceArr addObject:internalArr];
         }
@@ -133,7 +140,7 @@ static NSString * const BGCollectionCellIdentify = @"BGCollectionCellIdentify";
 }
 
 - (void)loadMoreRefreshData:(BGRefreshWaterFlowView *)refreshWaterFlowView {
-    if (self.sourceArr.count - self.dataList.count < 21) {
+    if (self.sourceArr.count - self.dataList.count < BGPageCount) {
         refreshWaterFlowView.isLoadMore = NO;
         
     } else {

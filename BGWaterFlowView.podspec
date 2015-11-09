@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   #项目名称
   spec.name         = 'BGWaterFlowView'
   #版本号
-  spec.version      = '0.0.2'
+  spec.version      = '0.0.3'
   #开源协议
   spec.license      = 'MIT'
   #对开源项目的描述

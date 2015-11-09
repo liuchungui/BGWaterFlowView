@@ -17,10 +17,6 @@
 （2）实现`BGWaterFlowViewDataSource`数据源代理方法
 
 ```
-- (NSInteger)numberOfSectionsInWaterFlowView:(BGWaterFlowView *)waterFlowView{
-    return 1;
-}
-
 - (NSInteger)waterFlowView:(BGWaterFlowView *)waterFlowView numberOfItemsInSection:(NSInteger)section{
     return self.dataList.count;
 }

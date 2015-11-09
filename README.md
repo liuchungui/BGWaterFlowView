@@ -7,6 +7,7 @@
   
 ##环境要求
   - iOS6.0+    
+  - Xcod7.0+
  
 ##Installation
 ####CocoaPods:
@@ -41,10 +42,6 @@
 （2）实现BGWaterFlowViewDataSource数据源代理方法
 
 ```
-- (NSInteger)numberOfSectionsInWaterFlowView:(BGWaterFlowView *)waterFlowView{
-    return 1;
-}
-
 - (NSInteger)waterFlowView:(BGWaterFlowView *)waterFlowView numberOfItemsInSection:(NSInteger)section{
     return self.dataList.count;
 }
@@ -57,6 +54,7 @@
 
 //返回Cells指定的高度，一般从服务器获取。
 - (CGFloat)waterFlowView:(BGWaterFlowView *)waterFlowView heightForItemAtIndexPath:(NSIndexPath *)indexPath{
+    //return cellHeight
     return 100 + (rand() % 100);
 }
 ```

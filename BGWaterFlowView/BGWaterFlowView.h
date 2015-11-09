@@ -48,8 +48,6 @@
 - (NSInteger)waterFlowView:(BGWaterFlowView *)waterFlowView numberOfItemsInSection:(NSInteger)section;
 - (UICollectionViewCell *)waterFlowView:(BGWaterFlowView *)waterFlowView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)waterFlowView:(BGWaterFlowView *)waterFlowView heightForItemAtIndexPath:(NSIndexPath *)indexPath;
-@optional
-- (NSInteger)numberOfSectionsInWaterFlowView:(BGWaterFlowView *)waterFlowView;
 @end
 
 #pragma mark - <BGWaterFlowViewDelegate>

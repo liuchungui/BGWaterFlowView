@@ -91,9 +91,6 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    if([self.dataSource respondsToSelector:@selector(numberOfSectionsInWaterFlowView:)]){
-        return [self.dataSource numberOfSectionsInWaterFlowView:self];
-    }
     return 1;
 }
 

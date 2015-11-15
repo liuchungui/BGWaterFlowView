@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   #项目名称
   spec.name         = 'BGWaterFlowView'
   #版本号
-  spec.version      = '0.0.3'
+  spec.version      = '0.0.4'
   #开源协议
   spec.license      = 'MIT'
   #对开源项目的描述
@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
   #开源项目的首页
   spec.homepage     = 'https://github.com/liuchungui/BGWaterFlowView'
   #作者信息
-  spec.author       = {'chunguiLiu' => '404468494@qq.com'}
+  spec.author       = {'liuchungui' => '404468494@qq.com', 'yangshebing' => '811068990@qq.com'}
   #项目的源和版本号
   spec.source       = { :git => 'https://github.com/liuchungui/BGWaterFlowView.git', :tag => spec.version }
   #源文件，这个就是供第三方使用的源文件

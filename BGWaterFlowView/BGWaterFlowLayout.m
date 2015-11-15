@@ -56,26 +56,27 @@
 }
 
 /**
- * 数组排序，由于每次只有第一个model的高度会发生变化，所以这里的排序是比较第一个model与后面model，直到找到height比它大的对象
+ * 数组排序，由于每次只有第一个model的高度会发生变化，所以取出第一个model从后面往前面进行比较，直到找到比高度小于等于它的对象为止
  */
 - (void)sortArrayByHeight:(NSMutableArray *)cellLayoutInfoArray{
     BGWaterFlowModel *firstModel = cellLayoutInfoArray.firstObject;
     //删除第一个对象
     [cellLayoutInfoArray removeObject:firstModel];
     
-    //查找到比它height更大的对象，然后插入在这个对象之前
+    //从后往前查找，查找到高度小于等于它的对象，则插入在这个对象之后
     NSInteger arrCount = cellLayoutInfoArray.count;
     NSInteger i = 0;
-    for (; i < arrCount; i++) {
+    for (i = arrCount - 1; i >= 0; i--) {
         BGWaterFlowModel *object = cellLayoutInfoArray[i];
-        if(object.height > firstModel.height){
-            [cellLayoutInfoArray insertObject:firstModel atIndex:i];
+        if(object.height <= firstModel.height){
+            [cellLayoutInfoArray insertObject:firstModel atIndex:i+1];
             break;
         }
     }
-    //如果遍历完都没找到比model.height更大的对象，则将它插入到最后
-    if(i == arrCount){
-        [cellLayoutInfoArray addObject:firstModel];
+    
+    //遍历完都没有找到，则插入在最前面
+    if(i < 0){
+        [cellLayoutInfoArray insertObject:firstModel atIndex:0];
     }
 }
 

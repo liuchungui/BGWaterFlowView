@@ -87,7 +87,8 @@
     NSLog(@"%@", indexPath);
 }
 ```
-
+##Demo效果截图
+![](http://ww1.sinaimg.cn/mw690/7f266405jw1ey22tbuohvg20ab0inqva.gif)
 ##协议许可
 BGWaterFlowView遵循MIT许可协议。有关详细信息,请参阅许可协议。
 

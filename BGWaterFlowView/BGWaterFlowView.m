@@ -37,7 +37,8 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
 - (void)initViews{
     BGWaterFlowLayout *waterFlowLayout = [[BGWaterFlowLayout alloc] init];
     waterFlowLayout.columnNum = 4;
-    waterFlowLayout.itemSpacing = 15;
+    waterFlowLayout.horizontalItemSpacing = 15;
+    waterFlowLayout.verticalItemSpacing = 15;
     waterFlowLayout.contentInset = UIEdgeInsetsZero;
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:waterFlowLayout];
@@ -80,8 +81,12 @@ static NSString * const BGCollectionRefreshFooterView = @"BGCollectionRefreshFoo
     self.waterFlowLayout.columnNum = columnNum;
 }
 
-- (void)setItemSpacing:(CGFloat)itemSpacing{
-    self.waterFlowLayout.itemSpacing = itemSpacing;
+- (void)setHorizontalItemSpacing:(CGFloat)horizontalItemSpacing{
+    self.waterFlowLayout.horizontalItemSpacing = horizontalItemSpacing;
+}
+
+- (void)setVerticalItemSpacing:(CGFloat)verticalItemSpacing{
+    self.waterFlowLayout.verticalItemSpacing = verticalItemSpacing;
 }
 
 - (void)setContentInset:(UIEdgeInsets)contentInset{

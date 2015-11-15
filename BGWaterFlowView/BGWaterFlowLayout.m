@@ -85,7 +85,7 @@
     self.headerLayoutAttributes = nil;
     self.footerLayoutAttributes = nil;
     //计算宽度
-    self.itemWidth = (self.collectionView.frame.size.width - (self.itemSpacing * (self.columnNum - 1)) - self.contentInset.left - self.contentInset.right) / self.columnNum;
+    self.itemWidth = (self.collectionView.frame.size.width - (self.horizontalItemSpacing * (self.columnNum - 1)) - self.contentInset.left - self.contentInset.right) / self.columnNum;
     
     //头视图
     if(self.headerHeight > 0){
@@ -102,7 +102,7 @@
             //获取第一个model，以它的高作为y坐标
             BGWaterFlowModel *firstModel = columnInfoArray.firstObject;
             CGFloat y = firstModel.height;
-            CGFloat x = self.contentInset.left + (self.itemSpacing + self.itemWidth) * firstModel.column;
+            CGFloat x = self.contentInset.left + (self.horizontalItemSpacing + self.itemWidth) * firstModel.column;
             //获取item高度
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
             CGFloat itemHeight = [((id<BGWaterFlowLayoutDelegate>)self.collectionView.delegate) collectionView:self.collectionView layout:self heightForItemAtIndexPath:indexPath];
@@ -110,7 +110,7 @@
             UICollectionViewLayoutAttributes *itemAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
             itemAttributes.frame = CGRectMake(x, y+self.contentInset.top+self.headerHeight, self.itemWidth, itemHeight);
             //保存新的列高，并进行排序
-            firstModel.height += (itemHeight + self.itemSpacing);
+            firstModel.height += (itemHeight + self.verticalItemSpacing);
             [self sortArrayByHeight:columnInfoArray];
             
             //保存布局信息
@@ -163,8 +163,13 @@
 }
 
 #pragma mark - set method
-- (void)setItemSpacing:(CGFloat)itemSpacing{
-    _itemSpacing = itemSpacing;
+- (void)setHorizontalItemSpacing:(CGFloat)horizontalItemSpacing{
+    _horizontalItemSpacing = horizontalItemSpacing;
+    [self invalidateLayout];
+}
+
+- (void)setVerticalItemSpacing:(CGFloat)verticalItemSpacing{
+    _verticalItemSpacing = verticalItemSpacing;
     [self invalidateLayout];
 }
 

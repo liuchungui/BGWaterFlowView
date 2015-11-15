@@ -20,9 +20,13 @@
  */
 @property (nonatomic, assign) NSInteger columnNum;
 /**
- *  cell的间距，默认为15
+ *  cell的水平间距，默认为15
  */
-@property (nonatomic, assign) CGFloat itemSpacing;
+@property (nonatomic, assign) CGFloat horizontalItemSpacing;
+/**
+ *  cell的垂直间距，默认为15
+ */
+@property (nonatomic, assign) CGFloat verticalItemSpacing;
 /**
  *  内容缩进，默认为UIEdgeInsetsZero
  */

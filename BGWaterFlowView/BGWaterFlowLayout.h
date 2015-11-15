@@ -23,9 +23,13 @@
  */
 @property (nonatomic, assign) NSUInteger columnNum;
 /**
- *  cell与cell之间的间距
+ *  cell与cell之间的水平间距
  */
-@property (nonatomic, assign) CGFloat itemSpacing;
+@property (nonatomic, assign) CGFloat horizontalItemSpacing;
+/**
+ *  cell与cell之间的垂直间距
+ */
+@property (nonatomic, assign) CGFloat verticalItemSpacing;
 /**
  *  cell之间的宽度
  */

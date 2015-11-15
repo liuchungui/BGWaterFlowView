@@ -30,8 +30,12 @@
     //设置代理
     waterFlowView.dataSource = self;
     waterFlowView.delegate = self;
+    //设置瀑布流列数
     waterFlowView.columnNum = 4;
-    waterFlowView.itemSpacing = 10;
+    //设置cell与cell之间的水平间距
+    waterFlowView.horizontalItemSpacing = 10;
+    //设置cell与cell之间的垂直间距
+    waterFlowView.verticalItemSpacing = 10;
     waterFlowView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
     [self.view addSubview:waterFlowView];
     //注册Cells
